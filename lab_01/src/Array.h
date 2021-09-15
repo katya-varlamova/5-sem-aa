@@ -12,7 +12,7 @@
 template <typename Type>
 class Array {
 public:
-    Array(size_t length, Type &filler);
+    Array(size_t length, Type filler);
     Array(Array &array);
     Array(Array &&array);
     ~Array() = default;
@@ -35,7 +35,7 @@ private:
 
 
 template<typename Type>
-Array<Type>::Array(size_t length, Type &filler)
+Array<Type>::Array(size_t length, Type filler)
 {
     this->length = length;
     this->data = std::shared_ptr<Type[]>(new Type[length]);
@@ -84,7 +84,10 @@ template <typename Type>
 std::ostream& operator<<(std::ostream& os, Array<Type>& arr)
 {
     for (size_t i = 0; i < arr.getLength(); i++) {
-        std::cout << arr[i] << " ";
+        if (i != arr.getLength() - 1)
+            std::cout << arr[i] << ", ";
+        else
+            std::cout << arr[i];
     }
     return os;
 }
