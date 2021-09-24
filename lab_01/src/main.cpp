@@ -149,20 +149,23 @@ double checkTime(int (*algo)(const char *, const char *), const char *s1, const 
 }
 using namespace std;
 int main() {
-//    string s1, s2;
-//    cin>> s1;
-//    cin>> s2;
-//    cout << recLev(s1.c_str(), s2.c_str());
-    string s1[10];
-    string s2[10];
-
-    ifstream istr("/Users/kate/Desktop/aa/lab_01/src/strings.txt");
-    if (istr.is_open())
-    {
-        for (int i = 0; i < 10; i++)
-            istr >> s1[i] >> s2[i];
-
-        istr.close();
+    string s1, s2;
+    cin>> s1;
+    cin>> s2;
+    cout << recLev(s1.c_str(), s2.c_str());
+    cout << recLevCache(s1.c_str(), s2.c_str());
+    cout << recDamLev(s1.c_str(), s2.c_str());
+    cout << levCache(s1.c_str(), s2.c_str());
+//    string s1[10];
+//    string s2[10];
+//
+//    ifstream istr("/Users/kate/Desktop/aa/lab_01/src/strings.txt");
+//    if (istr.is_open())
+//    {
+//        for (int i = 0; i < 10; i++)
+//            istr >> s1[i] >> s2[i];
+//
+//        istr.close();
 
         //python
 //        int (*(funcs[4]))(const char *, const char *) = {levCache, recDamLev, recLev, recLevCache};
@@ -211,7 +214,7 @@ int main() {
 //            printf(" %.2lf  \\\\ \n\\hline", checkTime(funcs[3], s1[j].c_str(), s2[j].c_str()));
 //            printf("\n");
 //        }
-    }
+//    }
 
     return 0;
 }
