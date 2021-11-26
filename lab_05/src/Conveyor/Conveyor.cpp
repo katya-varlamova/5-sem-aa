@@ -88,15 +88,15 @@ void log_current_event(size_t task_num, task_stats_t *stats, event_t event)
     time_t tt = std::chrono::system_clock::to_time_t(now);
     tm t = *gmtime(&tt);
     unsigned long long time = t.tm_min * 60 * 1000 + t.tm_sec * 1000 + static_cast<unsigned long long>(tp / std::chrono::milliseconds(1));
-    init_stats(task_num, stats, event, time);
-//    std::printf("Task №%lu | %s | %02u:%02u:%02u.%3u\n",
-//                task_num,
-//                eventToString(event).c_str(),
-//                t.tm_hour,
-//                t.tm_min,
-//                t.tm_sec,
-//                static_cast<unsigned long long>(tp / std::chrono::milliseconds(1))
-//    );
+    //init_stats(task_num, stats, event, time);
+    std::printf("Task №%lu | %s | %02u:%02u:%02u.%3u\n",
+                task_num,
+                eventToString(event).c_str(),
+                t.tm_hour,
+                t.tm_min,
+                t.tm_sec,
+                static_cast<unsigned long long>(tp / std::chrono::milliseconds(1))
+    );
 }
 void Сookies::calcEgg(int n) // fib
 {
@@ -161,7 +161,7 @@ void Conveyor::calcEgg()
     {
         std::shared_ptr<Сookies> c = q1.front();
         log_current_event(task_num, stats, TASK_1_STARTED);
-        c->calcEgg(1000000);
+        c->calcEgg(90000000);
         log_current_event(task_num, stats, TASK_1_ENDED);
         q2.push(c);
         q1.pop();
@@ -180,7 +180,7 @@ void Conveyor::calcButter()
         {
             std::shared_ptr<Сookies> c = q2.front();
             log_current_event(task_num, stats, TASK_2_STARTED);
-            c->calcButter(2, 1000000);
+            c->calcButter(2, 90000000);
             log_current_event(task_num, stats, TASK_2_ENDED);
 
 
@@ -201,7 +201,7 @@ void Conveyor::calcFlour()
         {
             std::shared_ptr<Сookies> c = q3.front();
             log_current_event(task_num, stats, TASK_3_STARTED);
-            c->calcFlour(1000000);
+            c->calcFlour(90000000);
             log_current_event(task_num, stats, TASK_3_ENDED);
             q3.pop();
             task_num++;
